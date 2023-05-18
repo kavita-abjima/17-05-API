@@ -12,7 +12,7 @@ builder.Services.AddDbContext<studentContext>(options => options.UseSqlServer(bu
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddAutoMapper(typeof(StudentsDetails.Helpers.APIMapping));
+builder.Services.AddAutoMapper(typeof(StudentsDetails.StudentMappingProfile.APIMapping));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

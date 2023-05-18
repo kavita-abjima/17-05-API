@@ -2,7 +2,7 @@
 using StudentsDetails.Dto;
 using StudentsDetails.Models;
 
-namespace StudentsDetails.Helpers
+namespace StudentsDetails.StudentMappingProfile
 {
     public class APIMapping:Profile
     {
