@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.JsonPatch;
 using StudentsDetails.Dto;
+using StudentsDetails.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace StudentsDetails;
 public interface IStudentRepository
 {
-    Task<List<Student>> GetStudent();
+    Task<List<StudentsDetailDto>> GetStudentAsync();
 
     Task<Student> GetStudentByIdAsync(int id);
 

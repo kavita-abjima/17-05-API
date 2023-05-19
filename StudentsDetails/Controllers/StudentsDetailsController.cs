@@ -18,23 +18,26 @@ namespace StudentsDetails.Controllers
     {
         private readonly studentContext _context;
         private readonly IMapper _mapper;
+        private readonly IStudentRepository _studentRepository;
 
-        public StudentsDetailsController(studentContext context, IMapper mapper)
+        public StudentsDetailsController(studentContext context, IMapper mapper, IStudentRepository studentRepository)
         {
             _context = context;
             _mapper = mapper;
+            _studentRepository = studentRepository;
         }
 
         // GET: api/StudentsDetails
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<StudentsDetailDto>>> GetStudentsDetails()
+        public async Task<ActionResult<IEnumerable<Student>>> GetStudentsDetails()
         {
           if (_context.StudentsDetails == null)
           {
               return NotFound();
           }
-            var students= _context.StudentsDetails.ToListAsync();
-            var studentdto1 = _mapper.Map<StudentsDetailDto>(students);
+            var studentdto = await _studentRepository.GetStudentAsync();
+            //var students= _context.StudentsDetails.ToListAsync();
+            var studentdto1 = _mapper.Map<Student>(studentdto);
 
             return Ok(studentdto1);
         }
